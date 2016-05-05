@@ -1,20 +1,20 @@
-# Steam Web API for Node.js and io.js
+# Steam Web API para Node.js e io.js
 
-This is an extremely simple node wrapper for Steam Web API. It's very experimental and the API will likely change.
+Isto é um compilado de node para Steam Web API extremamente simples. É completamente experimental e a API provavelmente mudará.
 
-# Installation
+# Instalação
 
 `npm install steam-web-api`
 
-# Usage
+# Uso
 
-The module exports a single `getInterface` function.
+O módulo exporta uma unica função `getInterface`.
 
 ```js
 var getInterface = require('steam-web-api');
 ```
 
-Call it with a Web API interface name and an optional API key.
+Chame isso com uma interface de nome Web API e uma API key opcional.
 
 ```js
 var steamRemoteStorage = getInterface('ISteamRemoteStorage');
@@ -22,14 +22,14 @@ var steamRemoteStorage = getInterface('ISteamRemoteStorage');
 var steamRemoteStorage = getInterface('ISteamRemoteStorage', 'API KEY');
 ```
 
-It returns an object with two properties: `get` and `post`. Both are functions that accept the following arguments:
+Ele retorna um objeto com duas propriedades: `get` e `post`. Ambas são funçoes que aceitam os seguintes argumentos:
 
 * Method name, e.g. `'GetCollectionDetails'`.
 * Method version, e.g. `1`.
-* Object with the parameters which will be serialized into a query string. Multiple values (e.g. for "publishedfileids") can be passed as arrays. Unlike other query string modules, this supports binary data (as Buffers) used in AuthenticateUser.
-* Callback. The first argument is status code, the second argument is the parsed JSON response if status code is 200.
+* Objetos com os parametros que serao serializados em uma rede de consulta. Multiplos valores (e.g. for "publishedfileids") podem passar várias ordens. Diferente de outros módulos de rede de consulta, esse suporta dados binarios (como buffers) usados em AuthenticateUser.
+* Callback. O primeiro argumento no codigo de status, o segundo argumento é a resposta do JSON analisada se o codigo de status é 200.
 
-`get` sends a GET request, `post` sends a POST request. It retries automatically on network errors.
+`get` manda um pedido de GET, `post` manda um pedido de POST. Ele tenta de novo automaticamente em erros de conexao.
 
 ```js
 steamRemoteStorage.get('GetUGCFileDetails', 1, {
